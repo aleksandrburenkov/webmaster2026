@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const svgCore = document.querySelector("#deepseek-vector-core");
+    const svgCore = document.querySelector("#web-anim-vector-core");
     if (!svgCore) return;
 
     let motionSpeed = { value: 1 };
@@ -154,4 +154,43 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
+
+    const updateGradientForTheme = (isDark) => {
+        const gradient = document.querySelector("#line-grad");
+        if (!gradient) return;
+        const stops = gradient.querySelectorAll("stop");
+        if (stops.length < 3) return;
+        if (isDark) {
+            stops[0].setAttribute("stop-color", "#D2D2D2");
+            stops[0].setAttribute("stop-opacity", "0.15");
+            stops[1].setAttribute("stop-color", "#E5E5E5");
+            stops[1].setAttribute("stop-opacity", "0.4");
+            stops[2].setAttribute("stop-color", "#D2D2D2");
+            stops[2].setAttribute("stop-opacity", "0.15");
+        } else {
+            stops[0].setAttribute("stop-color", "#2D2D2D");
+            stops[0].setAttribute("stop-opacity", "0.1");
+            stops[1].setAttribute("stop-color", "#1A1A1A");
+            stops[1].setAttribute("stop-opacity", "0.7");
+            stops[2].setAttribute("stop-color", "#2D2D2D");
+            stops[2].setAttribute("stop-opacity", "0.1");
+        }
+    };
+
+    const themeObserver = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+                const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+                updateGradientForTheme(isDark);
+            }
+        }
+    });
+
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+    });
+
+    const isDarkInitial = document.documentElement.getAttribute("data-theme") === "dark";
+    updateGradientForTheme(isDarkInitial);
 });
