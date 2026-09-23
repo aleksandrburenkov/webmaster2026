@@ -74,7 +74,7 @@ export class HeroAnimation {
         if (!this.ctx) return;
         const ctx = this.ctx;
         const spacing = 80;
-        const baseOpacity = 0.09;
+        const baseOpacity = 0.3;
 
         // 1. Динамически получаем значение CSS-переменной (только цифры RGB)
         const accentRgb =
@@ -87,7 +87,7 @@ export class HeroAnimation {
         ctx.lineWidth = 0.3;
 
         // Create gradient for vertical fading at top and bottom edges
-        const fadeHeight = this.height * 0.15; // 15% of height for fade zone
+        const fadeHeight = this.height * 0.5; // 15% of height for fade zone
 
         for (let x = 0; x < this.width; x += spacing) {
             ctx.beginPath();
