@@ -1,0 +1,407 @@
+/* ============================================================
+   PREMIUM ANIMATIONS — CSS Scroll-Driven Animations, @property,
+   @keyframes, View Transitions API — No JS scroll hijacking
+   ============================================================ */
+
+/* ── @property declarations for animated custom properties ── */
+@property --reveal-progress {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --card-glow-opacity {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --rail-stretch {
+  syntax: '<number>';
+  initial-value: 1;
+  inherits: false;
+}
+
+@property --light-x {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
+
+@property --light-y {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
+
+/* ── View Transitions API ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 500ms;
+}
+
+::view-transition-old(root) {
+  animation: fade-out 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Keyframes ── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reveal-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glitch-text {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+}
+
+@keyframes elastic-stretch {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.6); }
+}
+
+@keyframes magnetic-pull {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(var(--mx, 0px), var(--my, 0px)); }
+}
+
+@keyframes card-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes light-drift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Scroll-Driven: Reveal on scroll ── */
+.reveal {
+  --reveal-progress: 0;
+  opacity: 0;
+  transform: translateY(60px);
+  animation: reveal-element linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 100%;
+}
+
+@keyframes reveal-element {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-fade {
+  opacity: 0;
+  animation: reveal-fade-in linear forwards;
+  animation-timeline: view();
+  animation-range: entry 10% entry 60%;
+}
+
+@keyframes reveal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  animation: reveal-scale-in linear forwards;
+  animation-timeline: view();
+  animation-range: entry 5% entry 50%;
+}
+
+@keyframes reveal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Scroll-Driven: Section background transitions ── */
+.section-bg {
+  animation: section-bg-transition linear;
+  animation-timeline: view();
+  animation-range: cover 0% cover 100%;
+}
+
+@keyframes section-bg-transition {
+  from { background-color: var(--color-bg); }
+  to { background-color: var(--color-bg-alt); }
+}
+
+/* ── Scroll-Driven: Horizontal portfolio scroll ── */
+.portfolio-track-wrapper {
+  height: 300vh;
+  position: relative;
+}
+
+.portfolio-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.portfolio-track {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  gap: var(--space-2xl);
+}
+
+.portfolio-scroll-driven {
+  animation: portfolio-scroll linear forwards;
+  animation-timeline: scroll(root);
+  animation-range: contain;
+}
+
+@keyframes portfolio-scroll {
+  to {
+    transform: translateX(calc(-100% + 100vw - var(--container-padding) * 2));
+  }
+}
+
+.portfolio-scroll-driven .portfolio-card {
+  flex: 0 0 clamp(380px, 45vw, 600px);
+  min-width: 300px;
+  height: clamp(400px, 60vh, 700px);
+}
+
+/* ── Section-Aware Progress Rail (CSS part) ── */
+.progress-rail {
+  position: fixed;
+  top: 0;
+  right: var(--rail-gap);
+  width: var(--rail-width);
+  height: 100vh;
+  z-index: var(--z-rail);
+  pointer-events: none;
+}
+
+.progress-rail-track {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-rail-bg);
+  border-radius: var(--radius-full);
+}
+
+.progress-rail-thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-rail-thumb);
+  height: 0%;
+  transform-origin: top center;
+  transition: background-color 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-rail-thumb::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  background: var(--color-rail-thumb);
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 300ms ease;
+}
+
+.progress-rail-thumb.stretching::after {
+  opacity: 0.5;
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+.progress-rail-thumb.stretching {
+  animation: elastic-stretch 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (pointer: coarse) {
+  .progress-rail {
+    display: none;
+  }
+}
+
+/* ── Hero light drift ── */
+.hero-light {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    800px circle at var(--light-x, 50%) var(--light-y, 50%),
+    var(--color-accent-glow) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 300ms ease;
+}
+
+.hero-light.active {
+  opacity: 1;
+}
+
+/* ── Card hover stagger reveal ── */
+.portfolio-card .card-metadata {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .card-metadata:nth-child(1) {
+  transition-delay: 0ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-card:hover .card-metadata:nth-child(2) {
+  transition-delay: 80ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-card:hover .card-metadata:nth-child(3) {
+  transition-delay: 160ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Glitch micro-effect (rare accent) ── */
+.glitch-micro {
+  animation: glitch-text 200ms steps(2) both;
+}
+
+/* ── Shimmer loader ── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-border-light) 0%,
+    var(--color-border) 40%,
+    var(--color-border-light) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* ── Light drift background ── */
+.light-drift-bg {
+  background: linear-gradient(
+    135deg,
+    var(--color-bg) 0%,
+    var(--color-bg-alt) 30%,
+    var(--color-bg) 60%,
+    var(--color-bg-alt) 100%
+  );
+  background-size: 400% 400%;
+  animation: light-drift 20s ease-in-out infinite;
+}
+
+/* ── Reduced motion fallback ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-fade,
+  .reveal-scale {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .portfolio-track-wrapper {
+    height: auto;
+  }
+
+  .portfolio-scroll-driven {
+    animation: none !important;
+  }
+
+  .portfolio-sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .portfolio-track {
+    flex-wrap: wrap;
+  }
+}
