@@ -1,114 +1,12 @@
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding-top: 100px;
-    padding-bottom: var(--space-4xl);
-}
+# Финальные адаптивные стили интеграции ИИ-анимации
 
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-}
+Добавьте этот блок стилей в конец вашего файла `hero.css`. Код использует существующую у вас архитектуру слоев (`z-index`) и гармонично сосуществует с CSS-анимациями `slide-up`.
 
-.hero-eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
-    opacity: 0;
-    animation: slide-up 800ms 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
+---
 
-.hero-title {
-    opacity: 0;
-    animation: slide-up 800ms 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    margin-bottom: var(--space-lg);
-}
+## 🎨 Интеграционные CSS стили (`hero.css`)
 
-.hero-subtitle {
-    max-width: 560px;
-    opacity: 0;
-    animation: slide-up 800ms 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    margin-bottom: var(--space-2xl);
-}
-
-.hero-actions {
-    display: flex;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: slide-up 800ms 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.hero-scroll-indicator {
-    position: absolute;
-    bottom: var(--space-2xl);
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-    opacity: 0;
-    animation: fade-in 800ms 1200ms ease forwards;
-}
-
-.hero-scroll-line {
-    width: 1px;
-    height: 60px;
-    background: var(--color-border);
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-scroll-line::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-text);
-    animation: hero-scroll-indicator 2s ease-in-out infinite;
-}
-
-@keyframes hero-scroll-indicator {
-    0% {
-        transform: translateY(-100%);
-    }
-    50% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(-100%);
-    }
-}
-
-.hero-scroll-text {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-}
-
-@media (max-width: 768px) {
-    .hero {
-        min-height: 90vh;
-        padding-top: 80px;
-    }
-
-    .hero-scroll-indicator {
-        display: none;
-    }
-}
-
+```css
 /* ==========================================================================
    1. Корректировка существующих классов (Корректное разделение пространства)
    ========================================================================== */
@@ -213,3 +111,4 @@
         opacity: 0.25; /* Синхронизировано с opacity планшетного режима */
     }
 }
+```
