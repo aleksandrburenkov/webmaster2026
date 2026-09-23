@@ -25,6 +25,8 @@ class Project extends Model
         'status',
         'is_featured',
         'sort_order',
+        'stack',
+        'live_url',
     ];
 
     protected function casts(): array
@@ -39,6 +41,7 @@ class Project extends Model
             'budget' => 'integer',
             'duration' => 'integer',
             'sort_order' => 'integer',
+            'stack' => 'array',
         ];
     }
 }

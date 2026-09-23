@@ -5,6 +5,7 @@ import { MagneticButton } from './interaction/MagneticButton.js';
 import { ExitIntent } from './interaction/ExitIntent.js';
 import { PortfolioCards } from './components/PortfolioCards.js';
 import { Navigation } from './navigation/Navigation.js';
+import { HeroAnimation } from './animation/HeroAnimation.js';
 
 class App {
     constructor() {
@@ -24,6 +25,7 @@ class App {
 
             this.initHeroLight();
             this.initSmoothAnchors();
+            this.modules.heroAnimation = new HeroAnimation();
         });
     }
 

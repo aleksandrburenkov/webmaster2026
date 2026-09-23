@@ -12,6 +12,11 @@
               border-color 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+a.portfolio-card {
+  text-decoration: none;
+  color: inherit;
+}
+
 .portfolio-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);

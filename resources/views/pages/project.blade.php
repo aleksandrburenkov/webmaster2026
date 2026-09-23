@@ -40,6 +40,19 @@
                     </div>
                 </div>
                 @endif
+
+                @if($project->stack && count($project->stack) > 0)
+                <div style="margin-bottom: var(--space-2xl);">
+                    <h3 class="heading-md" style="margin-bottom: var(--space-lg);">Стек технологий</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+                        @foreach($project->stack as $tech)
+                        <span style="padding: 6px 16px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: var(--text-sm);">
+                            {{ is_array($tech) ? $tech['technology'] : $tech }}
+                        </span>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
             </div>
 
             <div>
@@ -80,6 +93,16 @@
                             <span class="label">{{ $project->accent_theme_color }}</span>
                         </div>
                     </div>
+                    @endif
+
+                    @if($project->live_url)
+                    <a href="{{ $project->live_url }}"
+                       class="btn btn-primary"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       style="width:100%; justify-content:center; margin-top: var(--space-md);">
+                        Перейти на сайт &rarr;
+                    </a>
                     @endif
 
                     <a href="/#contacts" class="btn btn-primary" style="width:100%; justify-content:center; margin-top: var(--space-md);">Обсудить похожий проект</a>

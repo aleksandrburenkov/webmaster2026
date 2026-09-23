@@ -1,10 +1,11 @@
 @props(['project'])
 
-<div class="portfolio-card"
-     data-scroll-color="{{ $project->accent_theme_color }}"
-     style="--card-accent: {{ $project->accent_theme_color ?? 'var(--color-accent)' }};"
-     role="article"
-     aria-label="Проект: {{ $project->title }}">
+<a href="{{ route('portfolio.show', $project->slug) }}"
+   class="portfolio-card"
+   data-scroll-color="{{ $project->accent_theme_color }}"
+   style="--card-accent: {{ $project->accent_theme_color ?? 'var(--color-accent)' }};"
+   role="article"
+   aria-label="Проект: {{ $project->title }}">
     <div class="portfolio-card-glow" aria-hidden="true"></div>
     <div class="portfolio-card-accent" aria-hidden="true"></div>
     <div class="portfolio-card-image">
@@ -42,4 +43,4 @@
             @endif
         </div>
     </div>
-</div>
+</a>

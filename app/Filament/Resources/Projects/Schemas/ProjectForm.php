@@ -119,6 +119,37 @@ class ProjectForm
                                     ->collapsible()
                                     ->columnSpanFull(),
                             ])->columns(2),
+                        Tabs\Tab::make('Технологии')
+                            ->schema([
+                                Repeater::make('stack')
+                                    ->label('Стек технологий')
+                                    ->schema([
+                                        TextInput::make('technology')
+                                            ->label('Технология')
+                                            ->required()
+                                            ->maxLength(100),
+                                        Select::make('type')
+                                            ->label('Тип')
+                                            ->options([
+                                                'frontend' => 'Frontend',
+                                                'backend' => 'Backend',
+                                                'database' => 'База данных',
+                                                'devops' => 'DevOps',
+                                                'tools' => 'Инструменты',
+                                                'other' => 'Другое',
+                                            ])
+                                            ->default('frontend'),
+                                    ])
+                                    ->collapsible()
+                                    ->columnSpanFull(),
+
+                                TextInput::make('live_url')
+                                    ->label('Ссылка на живой проект')
+                                    ->url()
+                                    ->placeholder('https://example.com')
+                                    ->maxLength(500)
+                                    ->columnSpanFull(),
+                            ]),
                         Tabs\Tab::make('Метрики и SEO')
                             ->schema([
                                 KeyValue::make('metrics')

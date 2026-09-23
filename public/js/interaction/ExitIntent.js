@@ -6,7 +6,7 @@ export class ExitIntent {
         this.overlay = document.querySelector('.exit-intent-overlay');
         if (!this.overlay) return;
 
-        this.closeBtn = this.overlay.querySelector('.exit-intent-close');
+        this.closeBtns = this.overlay.querySelectorAll('.exit-intent-close');
         this.hasShown = sessionStorage.getItem('exit_intent_shown') === 'true';
         this.isActive = false;
 
@@ -23,8 +23,13 @@ export class ExitIntent {
             }
         });
 
-        if (this.closeBtn) {
-            this.closeBtn.addEventListener('click', () => this.hide());
+        if (this.closeBtns && this.closeBtns.length > 0) {
+            this.closeBtns.forEach((btn) => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.hide();
+                });
+            });
         }
 
         this.overlay.addEventListener('click', (e) => {
