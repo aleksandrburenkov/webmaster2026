@@ -1,85 +1,87 @@
 :root {
-  --color-bg: #F9F7F2;
-  --color-bg-alt: #F0EDE6;
-  --color-surface: #FFFFFF;
-  --color-text: #1A1A1A;
-  --color-text-secondary: #666666;
-  --color-text-muted: #999999;
-  --color-accent: #2D2D2D;
-  --color-accent-glow: rgba(45, 45, 45, 0.15);
-  --color-border: #E5E0D8;
-  --color-border-light: #F0EDE6;
-  --color-rail-bg: rgba(0, 0, 0, 0.06);
-  --color-rail-thumb: #2D2D2D;
+    --color-bg: #f9f7f2;
+    --color-bg-alt: #f0ede6;
+    --color-surface: #ffffff;
+    --color-text: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-text-muted: #999999;
+    --color-accent: #2d2d2d;
+    --color-accent-glow: rgba(45, 45, 45, 0.15);
+    --color-border: #e5e0d8;
+    --color-border-light: #f0ede6;
+    --color-rail-bg: rgba(0, 0, 0, 0.06);
+    --color-rail-thumb: #2d2d2d;
 
-  --font-display: 'Clash Display', 'Syne', 'PP Neue Montreal', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', 'SF Pro Text', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    --font-display:
+        "Clash Display", "Syne", "PP Neue Montreal", system-ui, -apple-system,
+        sans-serif;
+    --font-body: "Inter", "SF Pro Text", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
 
-  --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
-  --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
-  --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1rem);
-  --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
-  --text-xl: clamp(1.3rem, 1.15rem + 0.75vw, 1.5rem);
-  --text-2xl: clamp(1.6rem, 1.35rem + 1.25vw, 2rem);
-  --text-3xl: clamp(2rem, 1.6rem + 2vw, 2.5rem);
-  --text-4xl: clamp(2.5rem, 1.9rem + 3vw, 3.5rem);
-  --text-5xl: clamp(3rem, 2.2rem + 4vw, 5rem);
-  --text-6xl: clamp(3.5rem, 2.5rem + 5vw, 6.5rem);
+    --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
+    --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+    --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1rem);
+    --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+    --text-xl: clamp(1.3rem, 1.15rem + 0.75vw, 1.5rem);
+    --text-2xl: clamp(1.6rem, 1.35rem + 1.25vw, 2rem);
+    --text-3xl: clamp(2rem, 1.6rem + 2vw, 2.5rem);
+    --text-4xl: clamp(2.5rem, 1.9rem + 3vw, 3.5rem);
+    --text-5xl: clamp(3rem, 2.2rem + 4vw, 5rem);
+    --text-6xl: clamp(3.5rem, 2.5rem + 5vw, 6.5rem);
 
-  --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
-  --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
-  --space-md: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
-  --space-lg: clamp(1rem, 0.8rem + 1vw, 1.5rem);
-  --space-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
-  --space-2xl: clamp(2rem, 1.6rem + 2vw, 3rem);
-  --space-3xl: clamp(3rem, 2.4rem + 3vw, 5rem);
-  --space-4xl: clamp(4rem, 3.2rem + 4vw, 8rem);
+    --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+    --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+    --space-md: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+    --space-lg: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+    --space-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+    --space-2xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+    --space-3xl: clamp(3rem, 2.4rem + 3vw, 5rem);
+    --space-4xl: clamp(4rem, 3.2rem + 4vw, 8rem);
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-full: 9999px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
 
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  --z-base: 1;
-  --z-dropdown: 100;
-  --z-sticky: 200;
-  --z-overlay: 300;
-  --z-modal: 400;
-  --z-cursor: 500;
-  --z-rail: 600;
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-overlay: 300;
+    --z-modal: 400;
+    --z-cursor: 500;
+    --z-rail: 600;
 
-  --container-max: 1440px;
-  --container-padding: var(--space-2xl);
+    --container-max: 1440px;
+    --container-padding: var(--space-2xl);
 
-  --rail-width: 4px;
-  --rail-gap: 12px;
+    --rail-width: 4px;
+    --rail-gap: 12px;
 }
 
 [data-theme="dark"] {
-  --color-bg: #0D0D0D;
-  --color-bg-alt: #141414;
-  --color-surface: #1A1A1A;
-  --color-text: #F0EDE6;
-  --color-text-secondary: #999999;
-  --color-text-muted: #666666;
-  --color-accent: #E5E0D8;
-  --color-accent-glow: rgba(229, 224, 216, 0.15);
-  --color-border: #2D2D2D;
-  --color-border-light: #1F1F1F;
-  --color-rail-bg: rgba(255, 255, 255, 0.06);
-  --color-rail-thumb: #E5E0D8;
+    --color-bg: #0d0d0d;
+    --color-bg-alt: #141414;
+    --color-surface: #1a1a1a;
+    --color-text: #f0ede6;
+    --color-text-secondary: #999999;
+    --color-text-muted: #666666;
+    --color-accent: #e5e0d8;
+    --color-accent-glow: rgba(229, 224, 216, 0.15);
+    --color-border: #2d2d2d;
+    --color-border-light: #1f1f1f;
+    --color-rail-bg: rgba(255, 255, 255, 0.06);
+    --color-rail-thumb: #e5e0d8;
 }
 
 @media (max-width: 768px) {
-  :root {
-    --container-padding: var(--space-lg);
-    --rail-width: 3px;
-    --rail-gap: 8px;
-  }
+    :root {
+        --container-padding: var(--space-lg);
+        --rail-width: 3px;
+        --rail-gap: 8px;
+    }
 }
