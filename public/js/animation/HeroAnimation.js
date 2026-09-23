@@ -188,7 +188,7 @@ export class HeroAnimation {
             slider.pos += slider.speed;
 
             // Базовая прозрачность ползунка (он ярче, чем фоновые линии)
-            let sliderOpacity = 0.6;
+            let sliderOpacity = 0.3;
 
             if (slider.axis === "horizontal") {
                 // Рассчитываем вертикальное угасание для горизонтальных линий

@@ -11,6 +11,7 @@
     --color-border-light: #f0ede6;
     --color-rail-bg: rgba(0, 0, 0, 0.06);
     --color-rail-thumb: #2d2d2d;
+    --color-accent-rgb: 45, 45, 45;
 
     --font-display:
         "Montserrat", "Syne", "PP Neue Montreal", system-ui, -apple-system,
@@ -76,6 +77,7 @@
     --color-border-light: #1f1f1f;
     --color-rail-bg: rgba(255, 255, 255, 0.06);
     --color-rail-thumb: #e5e0d8;
+    --color-accent-rgb: 240, 240, 240;
 }
 
 @media (max-width: 768px) {
