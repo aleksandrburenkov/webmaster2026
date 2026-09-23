@@ -13,10 +13,10 @@
     --color-rail-thumb: #2d2d2d;
 
     --font-display:
-        "Clash Display", "Syne", "PP Neue Montreal", system-ui, -apple-system,
+        "Montserrat", "Syne", "PP Neue Montreal", system-ui, -apple-system,
         sans-serif;
     --font-body: "Inter", "SF Pro Text", system-ui, -apple-system, sans-serif;
-    --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+    --font-mono: "Oswald", "SF Mono", "Fira Code", monospace;
 
     --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
     --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
