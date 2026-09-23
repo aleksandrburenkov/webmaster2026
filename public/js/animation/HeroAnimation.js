@@ -6,9 +6,11 @@ export class HeroAnimation {
         this.canvas = null;
         this.ctx = null;
         this.particles = [];
+        this.lineSliders = []; // Массив для бегающих ползунков
         this.width = 0;
         this.height = 0;
         this.rafId = null;
+        this.spacing = 80; // Расстояние между линиями сетки
 
         this.init();
     }
@@ -16,6 +18,7 @@ export class HeroAnimation {
     init() {
         this.createCanvas();
         this.createParticles();
+        this.createInitialSliders(); // Создаем стартовые ползунки
         this.animate();
         this.animateContent();
         this.bindResize();
@@ -70,48 +73,77 @@ export class HeroAnimation {
         }
     }
 
+    // Заполняем экран первыми ползунками сразу при старте анимации
+    createInitialSliders() {
+        for (let i = 0; i < 10; i++) {
+            this.spawnSlider(true);
+        }
+    }
+
+    // Создание одиночного ползунка на случайной линии сетки
+    spawnSlider(randomProgress = false) {
+        const isHorizontal = Math.random() > 0.5;
+        const speed = 1.0 + Math.random() * 2.0; // Скорость движения ползунка
+        const length = 40 + Math.random() * 60; // Длина светящейся полоски
+
+        if (isHorizontal) {
+            const linesCount = Math.floor(this.height / this.spacing);
+            const targetY =
+                Math.floor(Math.random() * linesCount) * this.spacing;
+            this.lineSliders.push({
+                axis: "horizontal",
+                coordinate: targetY,
+                pos: randomProgress ? Math.random() * this.width : -length,
+                speed: speed,
+                length: length,
+                maxPos: this.width,
+            });
+        } else {
+            const linesCount = Math.floor(this.width / this.spacing);
+            const targetX =
+                Math.floor(Math.random() * linesCount) * this.spacing;
+            this.lineSliders.push({
+                axis: "vertical",
+                coordinate: targetX,
+                pos: randomProgress ? Math.random() * this.height : -length,
+                speed: speed,
+                length: length,
+                maxPos: this.height,
+            });
+        }
+    }
     drawGrid() {
         if (!this.ctx) return;
         const ctx = this.ctx;
-        const spacing = 80;
+        const spacing = this.spacing;
         const baseOpacity = 0.3;
 
-        // 1. Динамически получаем значение CSS-переменной (только цифры RGB)
         const accentRgb =
             getComputedStyle(document.documentElement)
                 .getPropertyValue("--color-accent-rgb")
-                .trim() || "45, 45, 45"; // Резервный цвет, если переменная не задана
+                .trim() || "45, 45, 45";
 
-        // Применяем чистый RGB-цвет для базовой сетки
         ctx.strokeStyle = `rgba(${accentRgb}, ${baseOpacity})`;
         ctx.lineWidth = 0.3;
 
-        // Create gradient for vertical fading at top and bottom edges
-        const fadeHeight = this.height * 0.5; // 15% of height for fade zone
+        const fadeHeight = this.height * 0.5;
 
         for (let x = 0; x < this.width; x += spacing) {
             ctx.beginPath();
             ctx.moveTo(x, 0);
             ctx.lineTo(x, this.height);
 
-            // Create vertical gradient for fading at edges
             const gradient = ctx.createLinearGradient(0, 0, 0, this.height);
-
-            // Fully transparent at top edge
             gradient.addColorStop(0, `rgba(${accentRgb}, 0)`);
-            // Fade in
             gradient.addColorStop(
                 fadeHeight / this.height,
                 `rgba(${accentRgb}, ${baseOpacity})`,
             );
-            // Full opacity in middle
             gradient.addColorStop(0.5, `rgba(${accentRgb}, ${baseOpacity})`);
-            // Fade out
             gradient.addColorStop(
                 1 - fadeHeight / this.height,
                 `rgba(${accentRgb}, ${baseOpacity})`,
             );
-            // Fully transparent at bottom edge
             gradient.addColorStop(1, `rgba(${accentRgb}, 0)`);
 
             ctx.strokeStyle = gradient;
@@ -123,19 +155,92 @@ export class HeroAnimation {
             ctx.moveTo(0, y);
             ctx.lineTo(this.width, y);
 
-            // Calculate opacity based on vertical position for horizontal lines
             let opacity = baseOpacity;
             if (y < fadeHeight) {
-                // Fade in from top
                 opacity = baseOpacity * (y / fadeHeight);
             } else if (y > this.height - fadeHeight) {
-                // Fade out to bottom
                 opacity = baseOpacity * ((this.height - y) / fadeHeight);
             }
 
             ctx.strokeStyle = `rgba(${accentRgb}, ${opacity})`;
             ctx.stroke();
         }
+    }
+
+    // Метод для обновления позиций и рендеринга ползунков
+    updateAndDrawSliders() {
+        if (!this.ctx) return;
+        const ctx = this.ctx;
+        const accentRgb =
+            getComputedStyle(document.documentElement)
+                .getPropertyValue("--color-accent-rgb")
+                .trim() || "45, 45, 45";
+        const fadeHeight = this.height * 0.5;
+
+        // Контролируем хаотичное появление новых ползунков (максимум 15 штук)
+        if (this.lineSliders.length < 15 && Math.random() < 0.04) {
+            this.spawnSlider(false);
+        }
+
+        ctx.lineWidth = 0.8; // Делаем ползунки чуточку заметнее основных нитей
+
+        this.lineSliders.forEach((slider) => {
+            slider.pos += slider.speed;
+
+            // Базовая прозрачность ползунка (он ярче, чем фоновые линии)
+            let sliderOpacity = 0.6;
+
+            if (slider.axis === "horizontal") {
+                // Рассчитываем вертикальное угасание для горизонтальных линий
+                if (slider.coordinate < fadeHeight) {
+                    sliderOpacity *= slider.coordinate / fadeHeight;
+                } else if (slider.coordinate > this.height - fadeHeight) {
+                    sliderOpacity *=
+                        (this.height - slider.coordinate) / fadeHeight;
+                }
+
+                ctx.strokeStyle = `rgba(${accentRgb}, ${sliderOpacity})`;
+                ctx.beginPath();
+                ctx.moveTo(slider.pos, slider.coordinate);
+                ctx.lineTo(slider.pos + slider.length, slider.coordinate);
+                ctx.stroke();
+            } else {
+                ctx.beginPath();
+                ctx.moveTo(slider.coordinate, slider.pos);
+                ctx.lineTo(slider.coordinate, slider.pos + slider.length);
+
+                const grad = ctx.createLinearGradient(
+                    0,
+                    slider.pos,
+                    0,
+                    slider.pos + slider.length,
+                );
+                const getFadeOp = (y) => {
+                    let op = sliderOpacity;
+                    if (y < fadeHeight) op *= y / fadeHeight;
+                    else if (y > this.height - fadeHeight)
+                        op *= (this.height - y) / fadeHeight;
+                    return Math.max(0, op);
+                };
+
+                grad.addColorStop(
+                    0,
+                    `rgba(${accentRgb}, ${getFadeOp(slider.pos)})`,
+                );
+                grad.addColorStop(
+                    1,
+                    `rgba(${accentRgb}, ${getFadeOp(slider.pos + slider.length)})`,
+                );
+
+                ctx.strokeStyle = grad;
+                ctx.stroke();
+            }
+        });
+
+        // Отсеиваем улетевшие за границы экрана ползунки
+        this.lineSliders = this.lineSliders.filter(
+            (slider) => slider.pos < slider.maxPos,
+        );
     }
 
     drawBrackets() {
@@ -216,6 +321,7 @@ export class HeroAnimation {
             this.ctx.clearRect(0, 0, this.width, this.height);
 
             this.drawGrid();
+            this.updateAndDrawSliders(); // Запуск логики ползунков
             this.drawBrackets();
             this.updateParticles();
             this.drawParticles();
