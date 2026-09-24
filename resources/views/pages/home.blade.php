@@ -94,12 +94,15 @@
         </div>
 
         @if ($featuredProjects->count() > 0)
-            <div class="portfolio-track-wrapper">
-                <div class="portfolio-sticky">
-                    <div class="portfolio-track portfolio-scroll-driven">
-                        @foreach ($featuredProjects as $project)
-                            @include('partials.portfolio-card', ['project' => $project])
-                        @endforeach
+            <div class="container">
+                <div class="portfolio-track-wrapper">
+                    <div class="portfolio-sticky">
+                        <div class="grid-2 portfolio-scroll-driven">
+                            {{-- <div class="portfolio-track portfolio-scroll-driven"> --}}
+                            @foreach ($featuredProjects as $project)
+                                @include('partials.portfolio-card', ['project' => $project])
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,7 +118,7 @@
     </section>
 
     <section class="section section-bg" id="about" data-scroll-color="#666666">
-        <div class="container container-narrow">
+        <div class="container ">
             <div class="section-header">
                 <p class="section-label">Обо мне</p>
                 <h2 class="display-md reveal">Александр Буренков</h2>
@@ -147,7 +150,7 @@
     </section>
 
     <section class="section" id="contacts" data-scroll-color="#1A1A1A">
-        <div class="container container-narrow">
+        <div class="container ">
             <div class="section-header" style="text-align:center;">
                 <p class="section-label">Контакты</p>
                 <h2 class="display-md reveal">Обсудим ваш проект</h2>
