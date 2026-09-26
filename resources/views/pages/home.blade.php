@@ -161,26 +161,25 @@
             <div class="reveal" style="display:flex; flex-direction:column; gap: var(--space-lg); align-items:center;">
                 <div
                     style="display:flex; gap: var(--space-xl); flex-wrap:wrap; justify-content:center; margin-bottom: var(--space-xl);">
-                    @foreach($contactsSettings as $contact)
-                        @if($contact['has_icon'])
-                        <a href="{{ $contact['url'] }}" class="magnetic-btn" {!! $contact['custom_attrs'] !!}>
-                            <span class="btn btn-primary btn-lg">
-                                {!! $contact['icon_html'] !!}
-                                <span>{{ $contact['label'] }}</span>
-                            </span>
-                        </a>
+                    @foreach ($contactsSettings as $contact)
+                        @if ($contact['has_icon'])
+                            <a href="{{ $contact['url'] }}" class="magnetic-btn" {!! $contact['custom_attrs'] !!}>
+                                <span class="btn btn-primary btn-lg">
+                                    {!! $contact['icon_html'] !!}
+                                    <span>{{ $contact['label'] }}</span>
+                                </span>
+                            </a>
                         @endif
                     @endforeach
                 </div>
                 <div style="display:flex; flex-direction:column; gap: var(--space-sm); align-items:center;">
                     <p class="body-sm">Или напишите мне напрямую:</p>
-                    @foreach($contactsSettings as $contact)
-                        @if(!$contact['has_icon'])
-                        <a href="{{ $contact['url'] }}" class="body-base"
-                            style="color: var(--color-text); font-weight: 500;"
-                            {!! $contact['custom_attrs'] !!}>
-                            {{ $contact['label'] }}
-                        </a>
+                    @foreach ($contactsSettings as $contact)
+                        @if (!$contact['has_icon'])
+                            <a href="{{ $contact['url'] }}" class="body-base"
+                                style="color: var(--color-text); font-weight: 500;" {!! $contact['custom_attrs'] !!}>
+                                {{ $contact['label'] }}
+                            </a>
                         @endif
                     @endforeach
                 </div>

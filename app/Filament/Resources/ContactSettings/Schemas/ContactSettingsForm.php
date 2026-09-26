@@ -50,7 +50,15 @@ class ContactSettingsForm
                             ->label('Иконка')
                             ->disk('public')
                             ->directory('icons/contacts')
-                            ->acceptedFileTypes(['image/svg+xml', 'image/svg', 'image/png', 'image/jpeg', 'image/jpg'])
+                            ->acceptedFileTypes([
+                                'image/svg+xml',
+                                'image/svg',
+                                'image/png',
+                                'image/jpeg',
+                                'image/jpg',
+                                'text/plain',
+                                'text/xml',
+                            ])
                             ->maxSize(2048)
                             ->columnSpanFull(),
                     ])

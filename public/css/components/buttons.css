@@ -57,6 +57,11 @@
     padding: 16px 36px;
     font-size: var(--text-base);
 }
+.btn-lg svg,
+.btn-lg img {
+    width: 20px;
+    height: 20px;
+}
 
 .btn-sm {
     padding: 8px 20px;

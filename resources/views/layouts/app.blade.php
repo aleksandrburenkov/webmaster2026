@@ -81,7 +81,7 @@
                             style="color: var(--color-text-muted); font-weight: 400;">32</span></div>
                     <p class="footer-description body-sm">Качество веб-студии без студийных наценок. Разработка сайтов
                         под ключ в Брянске и по всей России.</p>
-<div class="footer-social">
+                    <div class="footer-social">
                         @foreach ($footerSettings as $contact)
                             <a href="{{ $contact['url'] }}" class="footer-social-link" {!! $contact['custom_attrs'] !!}
                                 aria-label="{{ $contact['label'] }}">
