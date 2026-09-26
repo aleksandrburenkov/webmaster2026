@@ -68,7 +68,11 @@ class ContactSettingsForm
                     ->schema([
                         TextInput::make('url')
                             ->label('URL / Ссылка')
-                            ->url()
+                            ->string()
+                            ->maxLength(255)
+                            ->nullable()
+
+                            // ->url()
                             ->maxLength(500)
                             ->columnSpanFull(),
 
