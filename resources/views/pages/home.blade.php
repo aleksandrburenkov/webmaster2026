@@ -89,21 +89,16 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Портфолио</p>
-                <h2 class="display-md reveal">Избранные проекты</h2>
+                <h2 class="display-md reveal-smooth">Избранные проекты</h2>
             </div>
         </div>
 
         @if ($featuredProjects->count() > 0)
             <div class="container">
-                <div class="portfolio-track-wrapper">
-                    <div class="portfolio-sticky">
-
-                        <div class="portfolio-track portfolio-scroll-driven">
-                            @foreach ($featuredProjects as $project)
-                                @include('partials.portfolio-card', ['project' => $project])
-                            @endforeach
-                        </div>
-                    </div>
+                <div class="grid-3">
+                    @foreach ($featuredProjects as $project)
+                        @include('partials.portfolio-card', ['project' => $project])
+                    @endforeach
                 </div>
             </div>
         @else
@@ -121,14 +116,14 @@
         <div class="container ">
             <div class="section-header">
                 <p class="section-label">Обо мне</p>
-                <h2 class="display-md reveal">Александр Буренков</h2>
+                <h2 class="display-md reveal-smooth">Александр Буренков</h2>
             </div>
-            <div class="reveal" style="display:flex; flex-direction:column; gap:var(--space-lg);">
-                <p class="body-lg">
+            <div class="reveal-smooth" style="display:flex; flex-direction:column; gap:var(--space-lg);">
+                <p class="body-lg reveal-text">
                     Частный веб-мастер из Брянска с фокусом на результат. Разрабатываю сайты, которые не просто красиво
                     выглядят, а приводят клиентов и увеличивают продажи.
                 </p>
-                <p class="body-base">
+                <p class="body-base reveal-text">
                     В моём подходе нет шаблонных решений. Каждый проект начинается с глубокого анализа вашей ниши и
                     конкурентов. Я проектирую структуру, которая учитывает путь пользователя от первого касания до целевого
                     действия.
@@ -153,12 +148,12 @@
         <div class="container ">
             <div class="section-header" style="text-align:center;">
                 <p class="section-label">Контакты</p>
-                <h2 class="display-md reveal">Обсудим ваш проект</h2>
-                <p class="body-lg reveal" style="margin-top: var(--space-md);">
+                <h2 class="display-md reveal-smooth">Обсудим ваш проект</h2>
+                <p class="body-lg reveal-text" style="margin-top: var(--space-md);">
                     Расскажите о задаче — я подготовлю персональное предложение с чёткими сроками и бюджетом.
                 </p>
             </div>
-            <div class="reveal" style="display:flex; flex-direction:column; gap: var(--space-lg); align-items:center;">
+            <div class="reveal-smooth" style="display:flex; flex-direction:column; gap: var(--space-lg); align-items:center;">
                 <div
                     style="display:flex; gap: var(--space-xl); flex-wrap:wrap; justify-content:center; margin-bottom: var(--space-xl);">
 
