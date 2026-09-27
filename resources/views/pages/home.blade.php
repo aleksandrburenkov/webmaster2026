@@ -97,8 +97,8 @@
             <div class="container">
                 <div class="portfolio-track-wrapper">
                     <div class="portfolio-sticky">
-                        <div class="grid-2 portfolio-scroll-driven">
-                            {{-- <div class="portfolio-track portfolio-scroll-driven"> --}}
+
+                        <div class="portfolio-track portfolio-scroll-driven">
                             @foreach ($featuredProjects as $project)
                                 @include('partials.portfolio-card', ['project' => $project])
                             @endforeach
