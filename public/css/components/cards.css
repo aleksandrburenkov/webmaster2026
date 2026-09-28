@@ -1,3 +1,11 @@
+.portfolio-card-item {
+  display: flex;
+}
+
+.portfolio-card-item > .portfolio-card {
+  width: 100%;
+}
+
 .portfolio-card {
   position: relative;
   display: flex;
