@@ -439,17 +439,4 @@
     animation: light-drift 20s ease-in-out infinite;
 }
 
-/* ── Reduced motion fallback ── */
-@media (prefers-reduced-motion: reduce) {
-    .reveal,
-    .reveal-fade,
-    .reveal-scale,
-    .reveal-smooth,
-    .reveal-text,
-    .reveal-aside-left {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-    }
-}
+
