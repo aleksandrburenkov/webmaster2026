@@ -290,6 +290,14 @@
     }
 }
 
+/* Появление .reveal-text реализовано через GSAP (снизу вверх).
+   Отключаем конфликтующую CSS-анимацию и убираем базовый блюр. */
+.reveal-text {
+    animation: none;
+    opacity: 1;
+    filter: none;
+}
+
 .reveal-aside-left {
     opacity: 0;
     transform: translateX(-40px);

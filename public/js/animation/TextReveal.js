@@ -20,14 +20,13 @@ export class TextReveal {
             );
         });
 
-        gsap.utils.toArray(".display-md.reveal-smooth").forEach((el) => {
-            el.style.animation = "none";
+        gsap.utils.toArray(".reveal-text").forEach((el) => {
             gsap.fromTo(
                 el,
-                { opacity: 0, x: -40 },
+                { opacity: 0, y: 30 },
                 {
                     opacity: 1,
-                    x: 0,
+                    y: 0,
                     duration: 0.8,
                     ease: "power3.out",
                     scrollTrigger: { trigger: el, start: "top 85%" },
