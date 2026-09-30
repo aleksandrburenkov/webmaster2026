@@ -7,6 +7,7 @@ import { PortfolioCards } from './components/PortfolioCards.js';
 import { Navigation } from './navigation/Navigation.js';
 import { HeroAnimation } from './animation/HeroAnimation.js';
 import { FooterAnimation } from './animation/FooterAnimation.js';
+import { TextReveal } from './animation/TextReveal.js';
 
 class App {
     constructor() {
@@ -28,6 +29,7 @@ class App {
             this.initSmoothAnchors();
             this.modules.heroAnimation = new HeroAnimation();
             this.modules.footerAnimation = new FooterAnimation();
+            this.modules.textReveal = new TextReveal();
         });
     }
 

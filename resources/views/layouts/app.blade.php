@@ -146,7 +146,7 @@
             <p class="body-base exit-intent-text">Оставьте заявку сегодня и получите бесплатный аудит вашего текущего
                 сайта + персональную скидку на первый проект.</p>
             <div class="exit-intent-actions">
-                <a href="#contacts" class="btn btn-primary btn-lg">Получить предложение</a>
+                <a href="#contacts" class="btn btn-primary btn-lg exit-intent-link">Получить предложение</a>
                 <button class="btn btn-ghost exit-intent-close">Нет, спасибо</button>
             </div>
         </div>
