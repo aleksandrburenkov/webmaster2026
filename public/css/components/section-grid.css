@@ -1,0 +1,81 @@
+/* ============================================================
+   Section grid spotlight — интерактивная фоновая сетка на .section
+   Клетки скрыты и проявляются только в радиальном пятне под
+   курсором/пальцем. Параметры сетки — как в hero: 80px, 0.3 alpha.
+   ============================================================ */
+
+/* Позволяет анимировать --spot-radius через CSS-переход (рост пятна из 0) */
+@property --spot-radius {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+}
+
+.section {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    --spot-radius-max: clamp(90px, 25vmin, 190px);
+    --spot-radius: 0px;
+    --spot-feather: 35%;
+    transition: --spot-radius 0.45s ease;
+}
+
+.section.is-spot-active {
+    --spot-radius: var(--spot-radius-max);
+}
+
+/* Слой сетки — абсолютный псевдо-элемент, не мешает контенту */
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* Цвет сетки задан напрямую, без вложенных переменных (надёжнее) */
+    background-image:
+        linear-gradient(to right, rgba(45, 45, 45, 0.3) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(45, 45, 45, 0.3) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: 0 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    /* #fff — корректный цвет маски в любом mask-mode */
+    -webkit-mask-image: radial-gradient(
+        circle var(--spot-radius) at var(--spot-x) var(--spot-y),
+        #fff 0%,
+        #fff var(--spot-feather),
+        transparent 100%
+    );
+    mask-image: radial-gradient(
+        circle var(--spot-radius) at var(--spot-x) var(--spot-y),
+        #fff 0%,
+        #fff var(--spot-feather),
+        transparent 100%
+    );
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+}
+
+.section.is-spot-active::before {
+    opacity: 1;
+}
+
+/* Контент поверх сетки */
+.section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Тёмная тема */
+[data-theme="dark"] .section::before {
+    background-image:
+        linear-gradient(to right, rgba(240, 240, 240, 0.3) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(240, 240, 240, 0.3) 1px, transparent 1px);
+}
+
+/* Тач — пятно меньше */
+@media (pointer: coarse) {
+    .section {
+        --spot-radius-max: clamp(70px, 30vmin, 140px);
+    }
+}

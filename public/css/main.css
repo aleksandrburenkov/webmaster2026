@@ -1,12 +1,85 @@
-@import 'core/reset.css';
-@import 'core/variables.css';
-@import 'core/typography.css';
-@import 'core/layout.css';
-@import 'premium-animations.css';
-@import 'components/cursor.css';
-@import 'components/navigation.css';
-@import 'components/hero.css';
-@import 'components/cards.css';
-@import 'components/buttons.css';
-@import 'components/exit-intent.css';
-@import 'components/footer.css';
+@import "core/reset.css";
+@import "core/variables.css";
+@import "core/typography.css";
+@import "core/layout.css";
+@import "premium-animations.css";
+@import "components/cursor.css";
+@import "components/navigation.css";
+@import "components/hero.css";
+@import "components/cards.css";
+@import "components/buttons.css";
+@import "components/exit-intent.css";
+@import "components/footer.css";
+
+/* ============ Section Grid Spotlight (inline — без отдельного @import) ============ */
+@property --spot-radius {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+}
+.section {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    --spot-radius-max: clamp(90px, 25vmin, 190px);
+    --spot-radius: 0px;
+    --spot-feather: 35%;
+    transition: --spot-radius 0.45s ease;
+}
+.section.is-spot-active {
+    --spot-radius: var(--spot-radius-max);
+}
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, rgba(45, 45, 45, 0.3) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(45, 45, 45, 0.3) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: 0 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    -webkit-mask: radial-gradient(
+            circle var(--spot-radius) at var(--spot-x) var(--spot-y),
+            #fff 0%,
+            #fff var(--spot-feather),
+            transparent 100%
+        )
+        no-repeat;
+    mask: radial-gradient(
+            circle var(--spot-radius) at var(--spot-x) var(--spot-y),
+            #fff 0%,
+            #fff var(--spot-feather),
+            transparent 100%
+        )
+        no-repeat;
+}
+.section.is-spot-active::before {
+    opacity: 1;
+}
+.section > * {
+    position: relative;
+    z-index: 1;
+}
+[data-theme="dark"] .section::before {
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(240, 240, 240, 0.3) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(240, 240, 240, 0.3) 1px,
+            transparent 1px
+        );
+}
+@media (pointer: coarse) {
+    .section {
+        --spot-radius-max: clamp(70px, 30vmin, 140px);
+    }
+}
+/* reduced-motion: эффект остаётся, но без анимации (статичное проявление) */
+/* @media (prefers-reduced-motion:reduce) { .section, .section::before { transition:none !important; } } */

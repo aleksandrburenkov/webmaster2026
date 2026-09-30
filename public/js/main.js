@@ -8,6 +8,7 @@ import { Navigation } from './navigation/Navigation.js';
 import { HeroAnimation } from './animation/HeroAnimation.js';
 import { FooterAnimation } from './animation/FooterAnimation.js';
 import { TextReveal } from './animation/TextReveal.js';
+import { SectionGridSpotlight } from './animation/SectionGridSpotlight.js?v=6';
 
 class App {
     constructor() {
@@ -30,6 +31,7 @@ class App {
             this.modules.heroAnimation = new HeroAnimation();
             this.modules.footerAnimation = new FooterAnimation();
             this.modules.textReveal = new TextReveal();
+            this.modules.sectionGridSpotlight = new SectionGridSpotlight();
         });
     }
 

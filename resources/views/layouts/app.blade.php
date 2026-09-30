@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <title>@yield('title', 'Webmaster32 | Александр Буренков')</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.css?v={{ filemtime(public_path('css/main.css')) }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
@@ -152,7 +152,7 @@
         </div>
     </div>
 
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/main.js?v={{ filemtime(public_path('js/main.js')) }}"></script>
 </body>
 
 </html>
