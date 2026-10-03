@@ -37,11 +37,13 @@
                 <a href="/" class="nav-brand" aria-label="Webmaster32 — на главную">
                     Webmaster<span>32</span>
                 </a>
-                <div class="nav-links">
+                <div class="nav-links" id="primary-menu">
+                    <div class="mobile-menu-brand">Webmaster<span>32</span></div>
                     <a href="{{ url('/#work') }}" class="nav-link">Проекты</a>
                     <a href="{{ url('/#about') }}" class="nav-link">Обо мне</a>
                     <a href="{{ route('portfolio.index') }}" class="nav-link">Портфолио</a>
                     <a href="{{ url('/#contacts') }}" class="nav-link">Контакты</a>
+                    <div class="mobile-menu-tagline">Качество веб-студии без студийных наценок</div>
                 </div>
 
                 <div class="nav-actions">
@@ -56,7 +58,7 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <button class="mobile-menu-btn" aria-label="Меню" data-mobile-menu>
+                    <button type="button" class="mobile-menu-btn" aria-label="Меню" aria-expanded="false" aria-controls="primary-menu" data-mobile-menu>
                         <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="0" y1="1" x2="20" y2="1" />

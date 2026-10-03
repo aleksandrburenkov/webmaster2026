@@ -5,6 +5,7 @@ import { MagneticButton } from './interaction/MagneticButton.js';
 import { ExitIntent } from './interaction/ExitIntent.js';
 import { PortfolioCards } from './components/PortfolioCards.js';
 import { Navigation } from './navigation/Navigation.js';
+import { MobileMenu } from './navigation/MobileMenu.js';
 import { HeroAnimation } from './animation/HeroAnimation.js';
 import { FooterAnimation } from './animation/FooterAnimation.js';
 import { TextReveal } from './animation/TextReveal.js';
@@ -21,6 +22,7 @@ class App {
         document.addEventListener('DOMContentLoaded', () => {
             this.modules.theme = new ThemeManager();
             this.modules.navigation = new Navigation();
+            this.modules.mobileMenu = new MobileMenu();
             this.modules.progressRail = new ProgressRail();
             this.modules.customCursor = new CustomCursor();
             this.modules.magneticButton = new MagneticButton();
