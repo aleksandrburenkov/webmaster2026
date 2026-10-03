@@ -71,6 +71,8 @@
         </div>
     </nav>
 
+    <div class="mobile-menu-backdrop" aria-hidden="true"></div>
+
     <main>
         @yield('content')
     </main>
