@@ -9,6 +9,7 @@ import { HeroAnimation } from './animation/HeroAnimation.js';
 import { FooterAnimation } from './animation/FooterAnimation.js';
 import { TextReveal } from './animation/TextReveal.js';
 import { SectionGridSpotlight } from './animation/SectionGridSpotlight.js?v=6';
+import { ScrollToTop } from './components/ScrollToTop.js';
 
 class App {
     constructor() {
@@ -32,6 +33,7 @@ class App {
             this.modules.footerAnimation = new FooterAnimation();
             this.modules.textReveal = new TextReveal();
             this.modules.sectionGridSpotlight = new SectionGridSpotlight();
+            this.modules.scrollToTop = new ScrollToTop();
         });
     }
 
