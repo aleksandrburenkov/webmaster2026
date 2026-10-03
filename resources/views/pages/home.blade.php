@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Webmaster32 | Александр Буренков — Разработка сайтов под ключ')
+@section('title', 'Webmaster32 | Александр Буренков — Разработка и продвижение сайтов под ключ')
 
 @section('content')
     <section class="hero relative overflow-hidden" id="home">
@@ -153,7 +153,8 @@
                     Расскажите о задаче — я подготовлю персональное предложение с чёткими сроками и бюджетом.
                 </p>
             </div>
-            <div class="reveal-smooth" style="display:flex; flex-direction:column; gap: var(--space-lg); align-items:center;">
+            <div class="reveal-smooth"
+                style="display:flex; flex-direction:column; gap: var(--space-lg); align-items:center;">
                 <div
                     style="display:flex; gap: var(--space-xl); flex-wrap:wrap; justify-content:center; margin-bottom: var(--space-xl);">
 
