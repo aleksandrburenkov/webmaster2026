@@ -124,8 +124,8 @@
             <div class="footer-bottom">
                 <p class="footer-copyright">&copy; {{ date('Y') }} Александр Буренков. Все права защищены.</p>
                 <div class="footer-legal">
-                    <a href="#" class="footer-legal-link">Политика конфиденциальности</a>
-                    <a href="#" class="footer-legal-link">Договор-оферта</a>
+                    <a href="{{ route('privacy-policy') }}" class="footer-legal-link">Политика конфиденциальности</a>
+                    <a href="{{ route('offer') }}" class="footer-legal-link">Договор-оферта</a>
                 </div>
             </div>
         </div>
