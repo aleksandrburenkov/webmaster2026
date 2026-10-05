@@ -13,6 +13,12 @@
     position: relative;
 }
 
+/* Якорные секции не заезжают под фиксированную шапку при нативном
+   переходе по #hash (без JS). JS-прокрутка считает отступ отдельно. */
+section[id] {
+    scroll-margin-top: var(--nav-offset);
+}
+
 .section-header {
     margin-bottom: var(--space-3xl);
 }

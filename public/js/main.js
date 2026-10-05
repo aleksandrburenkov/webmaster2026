@@ -6,6 +6,7 @@ import { ExitIntent } from './interaction/ExitIntent.js';
 import { PortfolioCards } from './components/PortfolioCards.js';
 import { Navigation } from './navigation/Navigation.js';
 import { MobileMenu } from './navigation/MobileMenu.js';
+import { SmoothScroll } from './navigation/SmoothScroll.js';
 import { HeroAnimation } from './animation/HeroAnimation.js';
 import { FooterAnimation } from './animation/FooterAnimation.js';
 import { TextReveal } from './animation/TextReveal.js';
@@ -30,7 +31,7 @@ class App {
             this.modules.portfolioCards = new PortfolioCards();
 
             this.initHeroLight();
-            this.initSmoothAnchors();
+            this.modules.smoothScroll = new SmoothScroll();
             this.modules.heroAnimation = new HeroAnimation();
             this.modules.footerAnimation = new FooterAnimation();
             this.modules.textReveal = new TextReveal();
@@ -61,21 +62,6 @@ class App {
 
         hero.addEventListener('mouseleave', () => {
             heroLight.classList.remove('active');
-        });
-    }
-
-    initSmoothAnchors() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                const targetId = anchor.getAttribute('href');
-                if (targetId === '#') return;
-
-                const target = document.querySelector(targetId);
-                if (!target) return;
-
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
         });
     }
 }

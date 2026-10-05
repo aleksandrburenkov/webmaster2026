@@ -178,13 +178,19 @@ body {
 }
 
 @media (max-width: 570px) {
-    h1.display-xl,
+    h1.display-xl {
+        font-size: var(--text-4xl);
+    }
+    h2.display-md {
+        font-size: var(--text-3xl);
+    }
+    /* h1.display-xl,
     h1.display-lg,
     h1.display-md {
-        font-size: clamp(2rem, 1.6rem + 3vw, 2.75rem);
-    }
+        font-size: clamp(2rem, 1.6rem + 3vw, 2.9rem);
+    } */
 
-    h2.display-md {
+    /* h2.display-md {
         font-size: clamp(1.75rem, 1.5rem + 1.5vw, 2rem);
-    }
+    } */
 }

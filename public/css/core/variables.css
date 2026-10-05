@@ -62,6 +62,11 @@
 
     --rail-width: 4px;
     --rail-gap: 12px;
+
+    /* Отступ под фиксированную шапку при прокрутке к якорю.
+       JS считает его точнее, переменная нужна для нативной
+       прокрутки (загрузка страницы сразу с #hash, отключённый JS). */
+    --nav-offset: 92px;
 }
 
 [data-theme="dark"] {
@@ -78,6 +83,12 @@
     --color-rail-bg: rgba(255, 255, 255, 0.06);
     --color-rail-thumb: #e5e0d8;
     --color-accent-rgb: 240, 240, 240;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --nav-offset: 76px;
+    }
 }
 
 @media (max-width: 768px) {
