@@ -1,0 +1,91 @@
+.cookie-consent {
+    position: fixed;
+    left: 50%;
+    bottom: calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
+    z-index: var(--z-sticky);
+    width: min(720px, calc(100% - var(--space-lg) * 2));
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 16px);
+    pointer-events: none;
+    transition:
+        opacity 500ms ease,
+        transform 500ms ease,
+        visibility 500ms ease;
+}
+
+.cookie-consent.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+.cookie-consent-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-xl);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.cookie-consent-text {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+.cookie-consent-accept {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .cookie-consent {
+        bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+        width: calc(100% - var(--space-md) * 2);
+    }
+
+    .cookie-consent-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-md);
+        padding: var(--space-lg);
+    }
+
+    .cookie-consent-accept {
+        width: 100%;
+    }
+}
+
+/* Альбомная ориентация на невысоких экранах */
+@media (max-height: 480px) {
+    .cookie-consent {
+        bottom: calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
+    }
+
+    .cookie-consent-inner {
+        flex-direction: row;
+        align-items: center;
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .cookie-consent-text {
+        font-size: var(--text-xs);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cookie-consent {
+        transition:
+            opacity 200ms ease,
+            visibility 200ms ease;
+        transform: translate(-50%, 0);
+    }
+}

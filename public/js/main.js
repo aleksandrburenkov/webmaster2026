@@ -12,6 +12,7 @@ import { FooterAnimation } from './animation/FooterAnimation.js';
 import { TextReveal } from './animation/TextReveal.js';
 import { SectionGridSpotlight } from './animation/SectionGridSpotlight.js?v=6';
 import { ScrollToTop } from './components/ScrollToTop.js';
+import { CookieConsent } from './components/CookieConsent.js';
 
 class App {
     constructor() {
@@ -37,6 +38,7 @@ class App {
             this.modules.textReveal = new TextReveal();
             this.modules.sectionGridSpotlight = new SectionGridSpotlight();
             this.modules.scrollToTop = new ScrollToTop();
+            this.modules.cookieConsent = new CookieConsent();
         });
     }
 
