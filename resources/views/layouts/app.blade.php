@@ -58,7 +58,8 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <button type="button" class="mobile-menu-btn" aria-label="Меню" aria-expanded="false" aria-controls="primary-menu" data-mobile-menu>
+                    <button type="button" class="mobile-menu-btn" aria-label="Меню" aria-expanded="false"
+                        aria-controls="primary-menu" data-mobile-menu>
                         <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="0" y1="1" x2="20" y2="1" />
@@ -106,7 +107,7 @@
                 <div>
                     <div class="footer-col-title">Навигация</div>
                     <div class="footer-col-links">
-                        <a href="/#work" class="footer-col-link">Портфолио</a>
+                        <a href="/#work" class="footer-col-link">Проекты</a>
                         <a href="/#about" class="footer-col-link">Обо мне</a>
                         <a href="/#contacts" class="footer-col-link">Контакты</a>
                     </div>
