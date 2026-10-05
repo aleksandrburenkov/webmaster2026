@@ -2,7 +2,7 @@
 
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
-        
+
     </IfModule>
 
     RewriteEngine On
@@ -28,3 +28,49 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# UTF-8 for text files
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .htm .css .js .json .xml .txt .svg .webmanifest .rss
+
+# Correct MIME types
+AddType image/x-icon .ico
+AddType image/svg+xml .svg .svgz
+AddType application/manifest+json .webmanifest
+AddType application/xml .xml .rss .atom
+AddType text/plain .txt .md
+
+# Basic caching for static SEO assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+
+    ExpiresByType application/manifest+json "access plus 1 day"
+    ExpiresByType application/xml "access plus 1 hour"
+    ExpiresByType text/plain "access plus 1 hour"
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Deny sensitive files if they somehow appear in public
+<FilesMatch "^\.env.*$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^\.htaccess$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^\.htpasswd$">
+    Require all denied
+</FilesMatch>

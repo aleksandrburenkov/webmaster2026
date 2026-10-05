@@ -1,0 +1,40 @@
+{
+    "name": "Webmaster32 | Александр Буренков",
+    "short_name": "Webmaster32",
+    "description": "Разработка сайтов под ключ: landing page, корпоративные сайты, интернет-магазины. Качество веб-студии без студийных наценок.",
+    "id": "/",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "lang": "ru",
+    "dir": "ltr",
+    "background_color": "#F9F7F2",
+    "theme_color": "#F9F7F2",
+    "icons": [
+        {
+            "src": "/favicons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicons/maskable-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/favicons/maskable-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

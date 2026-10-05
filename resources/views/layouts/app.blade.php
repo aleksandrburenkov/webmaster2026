@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'Александр Буренков — частный веб-мастер. Разработка сайтов под ключ: Landing, корпоративные сайты, интернет-магазины. Качество веб-студии без студийных наценок.')">
     <meta name="keywords"
         content="веб-мастер, разработка сайтов, Брянск, webmaster32, landing page, корпоративный сайт, интернет-магазин">
     <meta name="author" content="Александр Буренков">
-    <meta name="theme-color" content="#F9F7F2">
-    <meta property="og:title" content="@yield('title', 'Webmaster32 | Александр Буренков')">
-    <meta property="og:description" content="@yield('meta_description', 'Разработка сайтов под ключ. Качество веб-студии без студийных наценок.')">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>@yield('title', 'Webmaster32 | Александр Буренков')</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    @include('partials.seo')
+
     <link rel="stylesheet" href="/css/main.css?v={{ filemtime(public_path('css/main.css')) }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>

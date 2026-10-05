@@ -1,2 +1,63 @@
 User-agent: *
-Disallow:
+Allow: /
+
+Disallow: /admin
+Disallow: /login
+Disallow: /logout
+Disallow: /register
+Disallow: /password
+Disallow: /api/
+Disallow: /profile
+Disallow: /account
+Disallow: /cart
+Disallow: /checkout
+Disallow: /search
+Disallow: /*utm_
+Disallow: /*gclid=
+Disallow: /*yclid=
+Disallow: /*fbclid=
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+Allow: /favicon.ico
+Allow: /favicons/
+Allow: /site.webmanifest
+Allow: /build/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+Allow: /img/
+Allow: /images/
+Allow: /storage/
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://webmaster32.ru/sitemap.xml

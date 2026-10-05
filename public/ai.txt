@@ -1,0 +1,33 @@
+# AI Policy
+
+name: Webmaster32
+url: https://webmaster32.ru
+description: Александр Буренков — частный веб-мастер. Разработка сайтов под ключ: Landing, корпоративные сайты, интернет-магазины. Качество веб-студии без студийных наценок.
+contact: admin@webmaster32.ru
+robots: https://webmaster32.ru/robots.txt
+llms: https://webmaster32.ru/llms.txt
+sitemap: https://webmaster32.ru/sitemap.xml
+policy: https://webmaster32.ru/ai.txt
+
+ai_crawling_allowed: true
+ai_answer_generation_allowed: true
+ai_training_allowed: false
+
+preferred_attribution: При использовании материалов указывайте название сайта и активную ссылку на первоисточник.
+
+restricted_paths:
+  - /admin
+  - /login
+  - /logout
+  - /register
+  - /password
+  - /api/
+  - /profile
+  - /account
+  - /cart
+  - /checkout
+  - /search
+
+notes:
+  - Публичный контент разрешено индексировать и использовать для формирования ответов.
+  - Использование контента для обучения моделей без отдельного согласия не разрешено.
