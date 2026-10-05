@@ -20,11 +20,10 @@
                 </div>
             @endif
 
-            <div class="reveal"
-                style="display: grid; grid-template-columns: 1fr 300px; gap: var(--space-3xl); margin-bottom: var(--space-3xl);">
-                <div>
+            <div class="reveal project-layout">
+                <div class="project-main">
                     @if ($project->description)
-                        <div class="body-lg" style="margin-bottom: var(--space-2xl);">
+                        <div class="body-lg project-description" style="margin-bottom: var(--space-2xl);">
                             {!! $project->description !!}
                         </div>
                     @endif
@@ -58,62 +57,56 @@
                     @endif
                 </div>
 
-                <div>
-                    <div
-                        style="background: var(--color-surface); border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-lg); position: sticky; top: 100px;">
-                        @if ($project->client)
-                            <div>
-                                <p class="caption" style="margin-bottom: var(--space-xs);">Клиент</p>
-                                <p class="body-base" style="color: var(--color-text);">{{ $project->client }}</p>
+                <aside class="project-sidebar">
+                    @if ($project->client)
+                        <div>
+                            <p class="caption" style="margin-bottom: var(--space-xs);">Клиент</p>
+                            <p class="body-base project-meta-value">{{ $project->client }}</p>
+                        </div>
+                    @endif
+
+                    @if ($project->year)
+                        <div>
+                            <p class="caption" style="margin-bottom: var(--space-xs);">Год</p>
+                            <p class="body-base project-meta-value">{{ $project->year }}</p>
+                        </div>
+                    @endif
+
+                    @if ($project->budget)
+                        <div>
+                            <p class="caption" style="margin-bottom: var(--space-xs);">Бюджет</p>
+                            <p class="body-base project-meta-value" style="font-family: var(--font-mono);">
+                                {{ number_format($project->budget, 0, ',', ' ') }} ₽</p>
+                        </div>
+                    @endif
+
+                    @if ($project->duration)
+                        <div>
+                            <p class="caption" style="margin-bottom: var(--space-xs);">Срок реализации</p>
+                            <p class="body-base project-meta-value">{{ $project->duration }} дней</p>
+                        </div>
+                    @endif
+
+                    @if ($project->accent_theme_color)
+                        <div>
+                            <p class="caption" style="margin-bottom: var(--space-xs);">Фирменный цвет</p>
+                            <div style="display:flex; align-items:center; gap: var(--space-sm);">
+                                <span
+                                    style="width: 20px; height: 20px; border-radius: 50%; background: {{ $project->accent_theme_color }}; border: 1px solid var(--color-border); flex-shrink: 0;"></span>
+                                <span class="label" style="overflow-wrap: anywhere;">{{ $project->accent_theme_color }}</span>
                             </div>
-                        @endif
+                        </div>
+                    @endif
 
-                        @if ($project->year)
-                            <div>
-                                <p class="caption" style="margin-bottom: var(--space-xs);">Год</p>
-                                <p class="body-base" style="color: var(--color-text);">{{ $project->year }}</p>
-                            </div>
-                        @endif
+                    @if ($project->live_url)
+                        <a href="{{ $project->live_url }}" class="btn btn-primary" target="_blank"
+                            rel="noopener noreferrer">
+                            Перейти на сайт &rarr;
+                        </a>
+                    @endif
 
-                        @if ($project->budget)
-                            <div>
-                                <p class="caption" style="margin-bottom: var(--space-xs);">Бюджет</p>
-                                <p class="body-base" style="color: var(--color-text); font-family: var(--font-mono);">
-                                    {{ number_format($project->budget, 0, ',', ' ') }} ₽</p>
-                            </div>
-                        @endif
-
-                        @if ($project->duration)
-                            <div>
-                                <p class="caption" style="margin-bottom: var(--space-xs);">Срок реализации</p>
-                                <p class="body-base" style="color: var(--color-text);">{{ $project->duration }} дней</p>
-                            </div>
-                        @endif
-
-                        @if ($project->accent_theme_color)
-                            <div>
-                                <p class="caption" style="margin-bottom: var(--space-xs);">Фирменный цвет</p>
-                                <div style="display:flex; align-items:center; gap: var(--space-sm);">
-                                    <span
-                                        style="width: 20px; height: 20px; border-radius: 50%; background: {{ $project->accent_theme_color }}; border: 1px solid var(--color-border);"></span>
-                                    <span class="label">{{ $project->accent_theme_color }}</span>
-                                </div>
-                            </div>
-                        @endif
-
-                        @if ($project->live_url)
-                            <a href="{{ $project->live_url }}" class="btn btn-primary" target="_blank"
-                                rel="noopener noreferrer"
-                                style="width:100%; justify-content:center; margin-top: var(--space-md);">
-                                Перейти на сайт &rarr;
-                            </a>
-                        @endif
-
-                        <a href="/#contacts" class="btn btn-primary"
-                            style="width:100%; justify-content:center; margin-top: var(--space-md);">Обсудить похожий
-                            проект</a>
-                    </div>
-                </div>
+                    <a href="/#contacts" class="btn btn-primary">Обсудить похожий проект</a>
+                </aside>
             </div>
 
             @if ($project->gallery && count($project->gallery) > 0)

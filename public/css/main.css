@@ -11,6 +11,7 @@
 @import "components/exit-intent.css";
 @import "components/scroll-to-top.css";
 @import "components/footer.css";
+@import "components/project.css";
 
 /* ============ Section Grid Spotlight (inline — без отдельного @import) ============ */
 @property --spot-radius {

@@ -7,10 +7,6 @@
     padding-right: var(--container-padding);
 }
 
-/* .container-narrow {
-  max-width: 900px;
-} */
-
 .section {
     padding-top: var(--space-4xl);
     padding-bottom: var(--space-4xl);
