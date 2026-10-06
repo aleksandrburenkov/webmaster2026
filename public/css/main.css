@@ -13,6 +13,7 @@
 @import "components/cookie-consent.css";
 @import "components/footer.css";
 @import "components/project.css";
+@import "components/promotion.css";
 
 /* ============ Section Grid Spotlight (inline — без отдельного @import) ============ */
 @property --spot-radius {

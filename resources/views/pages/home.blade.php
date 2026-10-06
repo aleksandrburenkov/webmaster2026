@@ -140,6 +140,11 @@
                             Scroll-Driven Animations. Современные стандарты производительности и доступности.</p>
                     </div>
                 </div>
+                <p class="body-base reveal-text">
+                    Отдельное направление — <a href="{{ route('promotion.index') }}" class="text-link">комплексное
+                    продвижение сайтов</a>: техническое SEO, семантика, контент и
+                    <a href="{{ route('promotion.index') }}" class="text-link">GEO-оптимизация под AI-поиск</a>.
+                </p>
             </div>
         </div>
     </section>

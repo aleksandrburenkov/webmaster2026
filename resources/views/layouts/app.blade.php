@@ -36,6 +36,9 @@
                     <a href="{{ url('/#work') }}" class="nav-link">Проекты</a>
                     <a href="{{ url('/#about') }}" class="nav-link">Обо мне</a>
                     <a href="{{ route('portfolio.index') }}" class="nav-link">Портфолио</a>
+                    <a href="{{ route('promotion.index') }}"
+                        class="nav-link {{ request()->routeIs('promotion.*') ? 'active' : '' }}"
+                        @if (request()->routeIs('promotion.*')) aria-current="page" @endif>Продвижение</a>
                     <a href="{{ url('/#contacts') }}" class="nav-link">Контакты</a>
                     <div class="mobile-menu-tagline">Качество веб-студии без студийных наценок</div>
                 </div>
@@ -96,6 +99,7 @@
                         <a href="/#work" class="footer-col-link">Корпоративные сайты</a>
                         <a href="/#work" class="footer-col-link">Интернет-магазины</a>
                         <a href="/#work" class="footer-col-link">Доработка проектов</a>
+                        <a href="{{ route('promotion.index') }}" class="footer-col-link">Продвижение сайтов</a>
                     </div>
                 </div>
                 <div>
@@ -103,6 +107,7 @@
                     <div class="footer-col-links">
                         <a href="/#work" class="footer-col-link">Проекты</a>
                         <a href="/#about" class="footer-col-link">Обо мне</a>
+                        <a href="{{ route('promotion.index') }}" class="footer-col-link">Продвижение</a>
                         <a href="/#contacts" class="footer-col-link">Контакты</a>
                     </div>
                 </div>

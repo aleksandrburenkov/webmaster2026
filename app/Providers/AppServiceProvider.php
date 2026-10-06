@@ -21,17 +21,17 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        View::composer(['pages.home', 'layouts.app'], function ($view) {
+        View::composer(['pages.home', 'pages.promotion', 'layouts.app'], function ($view) {
             // ВАЖНО: сохраняем только toArray(), иначе возникнет __PHP_Incomplete_Class
             $contactsSettings = Cache::remember('contacts_settings_contacts', 3600, function () {
                 return ContactSetting::getActiveContacts('contacts')
-                    ->map(fn(ContactSetting $c) => self::toSettingsArray($c))
+                    ->map(fn (ContactSetting $c) => self::toSettingsArray($c))
                     ->toArray();
             });
 
             $footerSettings = Cache::remember('contacts_settings_footer', 3600, function () {
                 return ContactSetting::getActiveContacts('footer')
-                    ->map(fn(ContactSetting $c) => self::toSettingsArray($c))
+                    ->map(fn (ContactSetting $c) => self::toSettingsArray($c))
                     ->toArray();
             });
 
@@ -47,9 +47,9 @@ class AppServiceProvider extends ServiceProvider
             'label' => $contact->label,
             'type' => $contact->type,
             'block' => $contact->block,
-            'has_icon' => !empty($contact->icon_file),
+            'has_icon' => ! empty($contact->icon_file),
             'custom_attrs' => (string) $contact->getCustomAttributesString(),
-            'icon_html' => !empty($contact->icon_file)
+            'icon_html' => ! empty($contact->icon_file)
                 ? self::renderSvgInline($contact->icon_file)
                 : '',
         ];
@@ -57,14 +57,14 @@ class AppServiceProvider extends ServiceProvider
 
     private static function renderSvgInline(string $iconFile): string
     {
-        $path = storage_path('app/public/' . $iconFile);
-        if (!file_exists($path)) {
+        $path = storage_path('app/public/'.$iconFile);
+        if (! file_exists($path)) {
             return '';
         }
 
         $ext = pathinfo($iconFile, PATHINFO_EXTENSION);
         if ($ext !== 'svg') {
-            return '<img src="' . e(asset('storage/' . $iconFile)) . '" alt="" class="contact-icon">';
+            return '<img src="'.e(asset('storage/'.$iconFile)).'" alt="" class="contact-icon">';
         }
 
         $svg = file_get_contents($path);

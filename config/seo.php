@@ -1,5 +1,7 @@
 <?php
 
+use App\Seo\Providers\ProjectSitemapProvider;
+
 return [
     'enabled' => env('SEO_ENABLED', true),
 
@@ -76,6 +78,7 @@ return [
         'links' => [
             'Homepage' => '/',
             'Portfolio' => '/portfolio',
+            'Promotion' => '/promotion',
             'Privacy policy' => '/privacy-policy',
             'Terms' => '/offer',
         ],
@@ -85,6 +88,11 @@ return [
                 'name' => 'Портфолио',
                 'path' => '/portfolio',
                 'description' => 'Избранные проекты: landing page, корпоративные сайты, интернет-магазины.',
+            ],
+            [
+                'name' => 'Продвижение',
+                'path' => '/promotion',
+                'description' => 'Комплексное SEO-продвижение и GEO-оптимизация под AI-поиск (ChatGPT, Perplexity, Google AI Overviews).',
             ],
             [
                 'name' => 'Обо мне',
@@ -130,6 +138,11 @@ return [
                 'changefreq' => 'weekly',
             ],
             [
+                'loc' => '/promotion',
+                'priority' => '0.9',
+                'changefreq' => 'weekly',
+            ],
+            [
                 'loc' => '/privacy-policy',
                 'priority' => '0.3',
                 'changefreq' => 'yearly',
@@ -144,7 +157,7 @@ return [
         // Провайдеры динамических URL (статьи, страницы, товары, категории).
         // Каждый класс должен реализовывать App\Seo\SitemapProvider.
         'providers' => [
-            \App\Seo\Providers\ProjectSitemapProvider::class,
+            ProjectSitemapProvider::class,
         ],
     ],
 ];

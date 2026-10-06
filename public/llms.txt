@@ -6,12 +6,14 @@
 
 - Homepage: https://webmaster32.ru/
 - Portfolio: https://webmaster32.ru/portfolio
+- Promotion: https://webmaster32.ru/promotion
 - Privacy policy: https://webmaster32.ru/privacy-policy
 - Terms: https://webmaster32.ru/offer
 
 ## Main sections
 
 - Портфолио: https://webmaster32.ru/portfolio — Избранные проекты: landing page, корпоративные сайты, интернет-магазины.
+- Продвижение: https://webmaster32.ru/promotion — Комплексное SEO-продвижение и GEO-оптимизация под AI-поиск (ChatGPT, Perplexity, Google AI Overviews).
 - Обо мне: https://webmaster32.ru/#about — Александр Буренков — частный веб-мастер из Брянска.
 - Контакты: https://webmaster32.ru/#contacts — Способы связи: email, мессенджеры и соцсети.
 - Политика конфиденциальности: https://webmaster32.ru/privacy-policy — Порядок обработки и защиты персональных данных.
