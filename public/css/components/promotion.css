@@ -40,8 +40,13 @@
     align-items: center;
 }
 
+/* Появление продолжает интро-последовательность .hero-* из hero.css:
+   200/400/600/800ms → note на 1000ms, metrics на 1200ms.
+   Тот же keyframe slide-up, тайминг 800ms, easing и направление снизу вверх. */
 .promo-hero-note {
     margin-top: var(--space-lg);
+    opacity: 0;
+    animation: slide-up 800ms 1000ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* ── Metrics strip ── */
@@ -52,6 +57,8 @@
     padding-top: var(--space-2xl);
     margin-top: var(--space-2xl);
     border-top: 1px solid var(--color-border-light);
+    opacity: 0;
+    animation: slide-up 800ms 1200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .promo-metric-value {
@@ -305,9 +312,6 @@
 }
 
 /* ── FAQ ── */
-.promo-faq {
-    max-width: 900px;
-}
 
 .promo-faq-list {
     display: flex;
