@@ -6,9 +6,8 @@ export class ExitIntent {
         this.overlay = document.querySelector(".exit-intent-overlay");
         if (!this.overlay) return;
 
-        this.closeBtns = this.overlay.querySelectorAll(
-            ".exit-intent-close ,.exit-intent-link",
-        );
+        this.closeBtns = this.overlay.querySelectorAll(".exit-intent-close");
+        this.linkBtns = this.overlay.querySelectorAll(".exit-intent-link");
 
         this.hasShown = sessionStorage.getItem("exit_intent_shown") === "true";
         this.isActive = false;
@@ -30,6 +29,14 @@ export class ExitIntent {
             this.closeBtns.forEach((btn) => {
                 btn.addEventListener("click", (e) => {
                     e.preventDefault();
+                    this.hide();
+                });
+            });
+        }
+
+        if (this.linkBtns && this.linkBtns.length > 0) {
+            this.linkBtns.forEach((link) => {
+                link.addEventListener("click", () => {
                     this.hide();
                 });
             });
