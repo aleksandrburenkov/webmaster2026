@@ -313,12 +313,6 @@
 
 /* ── FAQ ── */
 
-.promo-faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-}
-
 .promo-faq-item {
     border: 1px solid var(--color-border-light);
     border-radius: var(--radius-md);
@@ -383,10 +377,13 @@
 }
 
 .promo-faq-answer {
-    padding: 0 var(--space-lg) var(--space-lg);
+    overflow: hidden;
+    transition: height var(--transition-base);
 }
 
 .promo-faq-answer p {
+    margin: 0;
+    padding: 0 var(--space-lg) var(--space-lg);
     color: var(--color-text-secondary);
     line-height: 1.7;
 }
@@ -503,7 +500,7 @@
         padding: var(--space-md);
     }
 
-    .promo-faq-answer {
+    .promo-faq-answer p {
         padding: 0 var(--space-md) var(--space-md);
     }
 

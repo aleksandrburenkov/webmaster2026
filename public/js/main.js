@@ -13,6 +13,7 @@ import { TextReveal } from './animation/TextReveal.js';
 import { SectionGridSpotlight } from './animation/SectionGridSpotlight.js?v=6';
 import { ScrollToTop } from './components/ScrollToTop.js';
 import { CookieConsent } from './components/CookieConsent.js';
+import { PromoFaq } from './components/PromoFaq.js';
 
 class App {
     constructor() {
@@ -39,6 +40,7 @@ class App {
             this.modules.sectionGridSpotlight = new SectionGridSpotlight();
             this.modules.scrollToTop = new ScrollToTop();
             this.modules.cookieConsent = new CookieConsent();
+            this.modules.promoFaq = new PromoFaq();
         });
     }
 
